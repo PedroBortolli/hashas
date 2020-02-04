@@ -1,4 +1,4 @@
-import { types } from './types'
+import { types } from './lib/types'
 
 const calc = (type1, type2) => {
     let damage = {

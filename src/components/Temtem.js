@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { calc } from '../calc'
 import Autosuggest from 'react-autosuggest'
 import styled from 'styled-components'
+import './styles/auto-suggestions.scss'
 
 const Temtem = ({ data }) => {
     const [value, setValue] = useState('')
@@ -25,11 +26,18 @@ const Temtem = ({ data }) => {
         setValue(newValue)
     }
 
+    const changeTemtem = (temtem) => {
+        setValue('')
+        setTemtem(temtem)
+    }
+
     const inputProps = {
         placeholder: 'Search for a Temtem',
         value,
         onChange
     }
+    
+    console.log(temtem)
 
     return (
         <Container>
@@ -40,12 +48,12 @@ const Temtem = ({ data }) => {
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
                 inputProps={inputProps}
-                onSuggestionSelected={() => setTemtem(value)}
+                onSuggestionSelected={(_, {suggestion}) => changeTemtem(suggestion.name)}
             />
             {temtem && 
-                <div>
+                <Center>
                     <h1>{temtem}</h1>
-                </div>
+                </Center>
             }
         </Container>
     )
@@ -54,5 +62,11 @@ const Temtem = ({ data }) => {
 export default Temtem
 
 const Container = styled.div`
-    margin: 0px 8px 0px 8px;
+    margin: 0px 8px;
+`
+const Center = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `
