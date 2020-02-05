@@ -3,6 +3,7 @@ import { calc } from '../calc'
 import Autosuggest from 'react-autosuggest'
 import styled from 'styled-components'
 import './styles/auto-suggestions.scss'
+import Card from './Card'
 
 const Temtem = ({ data }) => {
     const [value, setValue] = useState('')
@@ -36,8 +37,6 @@ const Temtem = ({ data }) => {
         value,
         onChange
     }
-    
-    console.log(temtem)
 
     return (
         <Container>
@@ -52,7 +51,8 @@ const Temtem = ({ data }) => {
             />
             {temtem && 
                 <Center>
-                    <h1>{temtem}</h1>
+                    <Title>{temtem}</Title>
+                    <Card temtem={temtem} />
                 </Center>
             }
         </Container>
@@ -62,11 +62,19 @@ const Temtem = ({ data }) => {
 export default Temtem
 
 const Container = styled.div`
-    margin: 0px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 340px;
 `
 const Center = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+`
+const Title = styled.span`
+    font-size: 36px;
+    font-weight: bold;
+    margin: 16px 0px 0px;
 `
