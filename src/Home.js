@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <Container>
             <Title>Hashas</Title>
-            <SubTitle>Quickly check the strenghts and weaknesses of your opponents</SubTitle>
+            <SubTitle>Quickly check the strengths and weaknesses of your opponents</SubTitle>
             <Row width={width}>
                 <Temtem data={data} />
                 <Temtem data={data} />
